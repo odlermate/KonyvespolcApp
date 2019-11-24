@@ -60,6 +60,8 @@ namespace KonyvespolcApp
             string kivalasztottkonyv = lista.SelectedItem.ToString();
             int aktualis = Convert.ToInt32(aktualis_num.Value), max = Convert.ToInt32(max_num.Value);
             var konyvek = new List<String>();
+            StreamWriter sw = new StreamWriter("asd.txt");
+            sw.WriteLine(lista.SelectedIndex);
             for (int i = 0; i < lista.Items.Count; i++)
             {
                 lista.SetSelected(i, false);
@@ -69,11 +71,9 @@ namespace KonyvespolcApp
                 lista.SetSelected(i, true);
                 konyvek.Add(lista.SelectedItem.ToString());
             }
-            StreamWriter sw = new StreamWriter("asd.txt");
             sw.WriteLine(kivalasztottkonyv);
             sw.WriteLine(aktualis);
             sw.WriteLine(max);
-            sw.WriteLine(lista.SelectedIndex);
             foreach (var x in konyvek)
             {
                 sw.WriteLine(x);
@@ -84,10 +84,10 @@ namespace KonyvespolcApp
         private void betoltes_button_Click(object sender, EventArgs e)
         {
             StreamReader sr = new StreamReader("asd.txt");
+            int selectedind = Convert.ToInt32(sr.ReadLine());
             string kivalasztottkonyv = sr.ReadLine().ToString();
             int aktualis = Convert.ToInt32(sr.ReadLine());
             int max = Convert.ToInt32(sr.ReadLine());
-            int selectedind = Convert.ToInt32(sr.ReadLine());
             var konyvek = new List<String>();
             while(!sr.EndOfStream)
             {
