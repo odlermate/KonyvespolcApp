@@ -37,6 +37,15 @@ namespace KonyvespolcApp
 
         private void mentes_button_Click(object sender, EventArgs e)
         {
+            string asd;
+            try
+            {
+                asd = lista.SelectedItem.ToString();
+            }catch
+            {
+                MessageBox.Show("nem választottál ki könyvet");
+                return;
+            }
             if(aktualis_num.Value > max_num.Value)
             {
                 MessageBox.Show("Az aktuális oldal nem lehet nagyobb, mint az összes oldal!"); ;
