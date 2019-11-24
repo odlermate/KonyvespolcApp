@@ -43,7 +43,7 @@ namespace KonyvespolcApp
                 asd = lista.SelectedItem.ToString();
             }catch
             {
-                MessageBox.Show("nem választottál ki könyvet");
+                MessageBox.Show("Nem választottál ki könyvet!");
                 return;
             }
             if(aktualis_num.Value > max_num.Value)
@@ -73,6 +73,7 @@ namespace KonyvespolcApp
             sw.WriteLine(kivalasztottkonyv);
             sw.WriteLine(aktualis);
             sw.WriteLine(max);
+            sw.WriteLine(lista.SelectedIndex);
             foreach (var x in konyvek)
             {
                 sw.WriteLine(x);
@@ -86,6 +87,7 @@ namespace KonyvespolcApp
             string kivalasztottkonyv = sr.ReadLine().ToString();
             int aktualis = Convert.ToInt32(sr.ReadLine());
             int max = Convert.ToInt32(sr.ReadLine());
+            int selectedind = Convert.ToInt32(sr.ReadLine());
             var konyvek = new List<String>();
             while(!sr.EndOfStream)
             {
@@ -97,6 +99,7 @@ namespace KonyvespolcApp
             {
                 lista.Items.Add(x);
             }
+            lista.SetSelected(selectedind, true);
             sr.Close();
         }
     }
