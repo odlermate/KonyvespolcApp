@@ -88,13 +88,7 @@ namespace KonyvespolcApp
             {
                 lista.Items.Add(x);
             }
-            for (int i = 0; i < lista.Items.Count; i++)
-            {
-                if(lista.Items.IndexOf(i).ToString() == kivalasztottkonyv)
-                {
-                    lista.SetSelected(i, true);
-                }
-            }
+            sr.Close();
         }
     }
 }
